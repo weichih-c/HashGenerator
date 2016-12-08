@@ -26,11 +26,14 @@ public class HashGenerator{
 					case 'f':	// if arg == '-f'
 						
 					try {
-						String md5 = MD5Converter.md5Hash( args[1] );	// calculate the hash value.
+						File file = new File( args[1] );
+						if( file.isDirectory() ){
+							System.out.println("Error: File " + args[1] + " is not a file.");
 						
-						System.out.println("MD5 Hash of " + args[1] + "is :\n");
-						System.out.println( md5 );
-						
+						}else{
+							String md5 = MD5Converter.md5Hash( file );	// calculate the hash value.
+							System.out.println("MD5 Hash of " + args[1] + " is :" + md5);
+						}
 						
 					} catch (IOException e) {
 						System.out.println("Error: File " + args[1] + " doesn't exist.");
@@ -46,7 +49,13 @@ public class HashGenerator{
 						FileTraversal ftraverse = new FileTraversal();
 						LinkedList<File> fileList = ftraverse.listFilesForFolder(folder);
 						for(File f : fileList){
-							System.out.println(f.getName());
+							try {
+								String md5 = MD5Converter.md5Hash(f);
+								System.out.println("MD5 Hash of " + f.getName() + " is :" + md5);
+							} catch (IOException e) {
+								System.out.println("Error: File " + args[1] + " doesn't exist.");
+							}
+							
 						}
 						
 						

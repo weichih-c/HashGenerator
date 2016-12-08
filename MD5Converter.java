@@ -7,9 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class MD5Converter {
 	
-	public static String md5Hash (String filePath) throws IOException {
-		File file = new File(filePath);
-		
+	public static String md5Hash (File file) throws IOException {
 		if(!file.exists())
 			throw new IOException("File doesn't exists.");
 		FileInputStream fis = null;

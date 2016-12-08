@@ -8,7 +8,7 @@ public class FileTraversal {
 				
 	    for (final File fileEntry : folder.listFiles()) {
 	        if (fileEntry.isDirectory()) {
-	        	LinkedList<File> tempList = listFilesForFolder(fileEntry);
+	        	listFilesForFolder(fileEntry);
 	        } else {
 	        	fileList.add(fileEntry);
 	        }
