@@ -1,6 +1,9 @@
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.LinkedList;
 
 
@@ -48,14 +51,40 @@ public class HashGenerator{
 						}
 						FileTraversal ftraverse = new FileTraversal();
 						LinkedList<File> fileList = ftraverse.listFilesForFolder(folder);
-						for(File f : fileList){
-							try {
-								String md5 = MD5Converter.md5Hash(f);
-								System.out.println("MD5 Hash of " + f.getName() + " is :" + md5);
-							} catch (IOException e) {
-								System.out.println("Error: File " + args[1] + " doesn't exist.");
+						
+						Writer writer = null;
+
+						try {
+						    writer = new BufferedWriter(
+						    			new OutputStreamWriter(
+						    				new FileOutputStream("HashResult.csv"), "utf-8"));
+						
+						    for(int i=0; i<fileList.size(); i++){
+						    	File f = fileList.get(i);
+						    
+								try {
+									String md5 = MD5Converter.md5Hash(f);
+									writer.write(i + ", ");
+									writer.write(f.getName() + ", ");
+									writer.write(f.getPath() + ", ");
+									writer.write(md5);
+									writer.write("\n");
+//									System.out.println("MD5 Hash of " + f.getName() + " is :" + md5);
+								} catch (IOException e) {
+									System.out.println("Error: File " + args[1] + " doesn't exist.");
+								}
+								
 							}
+						
+						} catch (IOException ex) {
+							System.out.println("Error: Output file occurs error.");
 							
+						} finally 
+						{
+							System.out.println("The result of hash is saved in HashResult.csv\n");
+							try {
+								writer.close();
+							} catch (Exception ex) {/*ignore*/}
 						}
 						
 						
