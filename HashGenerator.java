@@ -6,7 +6,11 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.LinkedList;
 
-
+/**
+ * @author weichih.c
+ * 
+ * Generate all file hashs and output a csv text.
+ */
 public class HashGenerator{
 	
 	private static void argumentErrorAlert(){

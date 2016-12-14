@@ -1,6 +1,13 @@
 import java.io.File;
 import java.util.LinkedList;
 
+/**
+ * @author weichih.c
+ * 
+ * This class can recursive traversal a specific directory,
+ * and return a list of files in the directory.
+ *
+ */
 public class FileTraversal {
 	LinkedList<File> fileList = new LinkedList<>();
 

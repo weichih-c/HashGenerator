@@ -5,6 +5,12 @@ import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * @author weichih.c
+ *
+ * This class is about calculate the MD5 Hash of the specific file.
+ * 
+ */
 public class MD5Converter {
 	
 	public static String md5Hash (File file) throws IOException {

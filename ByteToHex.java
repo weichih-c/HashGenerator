@@ -1,5 +1,8 @@
-// fast convert byte array To Hex
-
+/**
+ * @author weichih.c
+ * 
+ * Fast convert byte array To Hex
+ */
 public class ByteToHex {
 
 	final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
